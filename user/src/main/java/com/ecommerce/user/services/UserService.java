@@ -46,15 +46,15 @@ public class UserService {
 //        return userRepository.findById(id);
 //    }
 
-    public Optional<UserResponse> fetchUser(Long id) {
-        return userRepository.findById(id)
+    public Optional<UserResponse> fetchUser(String id) {
+        return userRepository.findById(String.valueOf(id))
                 .map(this::mapToUserResponse);
     }
 
     //    public boolean updateUser(Long id, User updatedUser) {
-    public boolean updateUser(Long id, UserRequest updatedUserRequest) {
+    public boolean updateUser(String id, UserRequest updatedUserRequest) {
 
-        return userRepository.findById(id)
+        return userRepository.findById(String.valueOf(id))
                 .map(existingUser -> {
 //                    existingUser.setFirstName(updatedUser.getFirstName());
 //                    existingUser.setLastName(updatedUser.getLastName());
