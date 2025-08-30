@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/ecom_user
+      uri: ${MONGO_URI}
       database: ecom_user
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/userdb

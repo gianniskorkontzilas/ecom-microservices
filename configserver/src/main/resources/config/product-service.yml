@@ -2,11 +2,11 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/product
 #    url: jdbc:mysql://localhost:3307/giakor
-    username: giakor
-    password: giakor
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
 
 
-#    username: product_user
+  #    username: product_user
 #    password: StrongAppPassword123!
 
 
