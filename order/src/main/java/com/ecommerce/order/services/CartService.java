@@ -1,6 +1,8 @@
 package com.ecommerce.order.services;
 
 
+import com.ecommerce.order.clients.ProductServiceClient;
+import com.ecommerce.order.dto.ProductResponse;
 import com.ecommerce.order.repositories.CartItemRepository;
 import com.ecommerce.order.dto.CartItemRequest;
 import com.ecommerce.order.models.CartItem;
@@ -17,14 +19,17 @@ import java.util.List;
 public class CartService {
 //    private final ProductRepository productRepository;
     private final CartItemRepository cartItemRepository;
+    private final ProductServiceClient productServiceClient;
+
+
 //    private final UserRepository userRepository;
 
     public boolean addToCart(String userId, CartItemRequest request) {
         // Look for product
-//        Optional<Product> productOpt = productRepository.findById(request.getProductId());
-//        if (productOpt.isEmpty())
-//            return false;
-//
+        ProductResponse productResponse = productServiceClient.getProductDetails(request.getProductId());
+        if (productResponse == null || productResponse.getStockQuantity() < request.getQuantity())
+            return false;
+
 //        Product product = productOpt.get();
 //        if (product.getStockQuantity() < request.getQuantity())
 //            return false;
