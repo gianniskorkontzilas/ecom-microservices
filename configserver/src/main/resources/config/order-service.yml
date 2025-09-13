@@ -16,15 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 
-#  h2:
-#    console:
-#      enabled: true
-#  datasource:
-#    url: jdbc:h2:mem:test
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: create
+
 
 server:
   port: 8083
@@ -37,3 +29,10 @@ management:
 
 app:
   message: "Hello Order!"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
