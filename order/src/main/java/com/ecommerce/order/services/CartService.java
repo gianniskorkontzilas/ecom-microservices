@@ -2,7 +2,9 @@ package com.ecommerce.order.services;
 
 
 import com.ecommerce.order.clients.ProductServiceClient;
+import com.ecommerce.order.clients.UserServiceClient;
 import com.ecommerce.order.dto.ProductResponse;
+import com.ecommerce.order.dto.UserResponse;
 import com.ecommerce.order.repositories.CartItemRepository;
 import com.ecommerce.order.dto.CartItemRequest;
 import com.ecommerce.order.models.CartItem;
@@ -20,6 +22,9 @@ public class CartService {
 //    private final ProductRepository productRepository;
     private final CartItemRepository cartItemRepository;
     private final ProductServiceClient productServiceClient;
+    private final UserServiceClient userServiceClient;
+
+
 
 
 //    private final UserRepository userRepository;
@@ -39,6 +44,10 @@ public class CartService {
 //            return false;
 //
 //        User user = userOpt.get();
+
+        UserResponse userResponse = userServiceClient.getUserDetails(userId);
+        if (userResponse == null)
+            return false;
 
         CartItem existingCartItem = cartItemRepository.findByUserIdAndProductId(userId, request.getProductId());
         if (existingCartItem != null) {
