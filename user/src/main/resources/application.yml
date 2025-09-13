@@ -2,7 +2,13 @@ spring:
   application:
     name: user-service
   config:
+#    import: optional:configserver:http://localhost:8888
     import: optional:configserver:http://localhost:8888
+
+logging:
+  level:
+    root: INFO
+    com.ecommerce.user: TRACE
 
 #eureka:
 #  client:
